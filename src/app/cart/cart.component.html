@@ -1,0 +1,49 @@
+<h3 *ngIf="!cart?.data" class="d-flex align-items-center justify-content-center mt-5 h1 greenColor">Your Cart Is Empty
+    ....</h3>
+<div class="container my-5" *ngIf="cart?.data">
+    <h3 class="py-3">Cart Details:</h3>
+
+    <div class="lightColor rounded-2 p-2">
+        <div class="d-flex justify-content-between p-4">
+            <h5>Total item: <span class="greenColor">{{cart.numOfCartItems}}</span></h5>
+
+            <div class="d-flex align-items-center flex-column">
+                <h5 class="mb-3">Total Price: <span class="greenColor"> {{cart.data.totalCartPrice|currency:'EGY'}}</span></h5>
+
+                <button class="btn main-bg">
+                    <a class="text-white" [routerLink]="['/checkout/', cart.data._id]"
+                        routerLinkActive="router-link-active" routerLinkActive="router-link-active">Continue to pay</a>
+                </button>
+
+            </div>
+        </div>
+        
+        <div class="row border-bottom" *ngFor="let product of cart.data.products|filterCount">
+            <div class="col-md-2 ">
+                <img [src]="product.product.imageCover" class="w-100" alt="">
+            </div>
+
+            <div class="col-md-10 d-flex align-items-center justify-content-between mb-sm-3">
+                <div>
+                    <h3 class="h5 mb-3">{{product.product.title}}</h3>
+                    <h3 class="smallFont greenColor">{{product.product.category.name}}</h3>
+                    <p class=" greenColor">{{product.price|currency:'EGY'}}</p>
+                    <button (click)="removeItem(product.product.id)" class="btn m-0 p-0 redColor removeBtn"><i
+                            class="fa-regular fa-trash-can greenColor"></i> Remove</button>
+                </div>
+
+                <div class="mx-4">
+                    <button class="greenBorder mx-2 rounded-2"
+                        (click)="updateCartCount(product.product.id,product.count-1)">-</button>
+                    <span>{{product.count}}</span>
+                    <button class="greenBorder mx-2 rounded-2"
+                        (click)="updateCartCount(product.product.id,product.count+1)">+</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="btn main-bg mt-4 bg-danger d-block ms-auto my-2" (click)="clearCart()">Clear Cart</button>
+    </div>
+</div>

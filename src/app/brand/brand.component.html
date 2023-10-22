@@ -1,0 +1,18 @@
+
+<div class="row g-3 my-4">
+    <h2 class="d-flex justify-content-center greenColor fw-bolder h1">All Brands</h2>
+    <div class="col-md-3 text-center"  *ngFor="let brand of allBrand">
+        <div class="card" (click)="clickImage(brand.image)">
+            <img  [src]="brand.image" class="w-100" alt="...">
+            <div class="card-body">
+                <h3>{{brand.name}}</h3>
+            </div>
+          </div>
+     
+    </div>
+</div>
+
+
+
+
+

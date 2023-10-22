@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+:root {
+    --mainColor: #0aad0a;
+    --lightColor: #f0f3f2;
+    --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px, rgba(145, 158, 171, 0.14) 0px 2px 4px -1px;
+    --ratingColor: #ffc908;
+    --fontFamily: 'Encode Sans Expanded', sans-serif;
+}
+
+body {
+    font-family: var(--fontFamily);
+}
+
+.shadow {
+    box-shadow: var(--shadow);
+}
+
+.lightColor {
+    background-color: var(--lightColor);
+}
+
+.greenColor {
+    color: var(--mainColor);
+}
+
+.yellowColor {
+    color: var(--ratingColor);
+}
+
+.main-bg,
+.main-bg:hover,
+.main-bg:disabled {
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+.cursorPointer {
+    cursor: pointer;
+}
+
+.smallFont {
+    font-size: 14px;
+}
+
+a,
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.greenBorder {
+    border: 1px solid var(--mainColor);
+}
+
+.redColor {
+    color: red;
+}
+
+
+/* & Global Style For Product */
+.product:hover{
+   
+    border: 1px solid var(--mainColor);
+}
+
+.product{
+    transition: border 400ms;
+}
+
+.product .btn{
+    transition: all 400ms;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.product:hover .btn{
+    opacity: 1;
+    transform: translateY(10%);
+}

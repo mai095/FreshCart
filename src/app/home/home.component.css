@@ -1,0 +1,7 @@
+
+
+
+.form-control:focus {
+    border-color: var(--mainColor);
+    box-shadow:none
+}

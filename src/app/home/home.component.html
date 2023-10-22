@@ -1,0 +1,42 @@
+<app-main-slider></app-main-slider>
+<app-category></app-category>
+
+<div class="row">
+    <div>
+        <input type="text" placeholder="Search By Name ..." class="form-control my-4 w-75 mx-auto search" [(ngModel)]="searchTerm">
+    </div>
+    
+    <!-- ^Product -->
+    <div class="col-md-3 px-2 py-4 cursorPointer" *ngFor="let product of allProducts|search:searchTerm">
+        <div class="product p-2">
+            <a [routerLink]="['/productDetails' , product._id]">
+
+                <img [src]='product.imageCover' class="w-100" alt="">
+
+                <p class="greenColor smallFont">{{product.category.name}}</p>
+                <h2 class="h6">{{product.title.split(" ").slice(0,2).join(" ")}}</h2>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-muted">{{product.price|currency:'EGY'}}</p>
+
+                    <div>
+                        <i *ngIf="product.ratingsAverage >= 3" class="fas fa-star yellowColor"></i>
+
+                        <i *ngIf="product.ratingsAverage < 3" class="fa-solid fa-star-half-stroke yellowColor"></i>
+                        <span>{{product.ratingsAverage}}</span>
+                    </div>
+                </div>
+                
+            </a>
+            <div class="mt-2">
+                <!-- & Add -->
+                <i class="fa-solid fa-heart h3" *ngIf="!wishListData.includes(product._id)" (click)="addToWishList(product._id)"></i>
+                <!-- & Remove -->
+                <i class="fa-solid fa-heart text-danger h3 " *ngIf="wishListData.includes(product._id)" (click)="removeFavItem(product._id)"></i>
+            </div>
+            <button class="btn main-bg w-100"  (click)="addToCart(product._id)">+ Add To Cart</button>
+            
+        </div>
+
+    </div>
+</div>

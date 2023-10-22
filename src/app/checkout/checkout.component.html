@@ -1,0 +1,21 @@
+<form [formGroup]="shippingAddress" (ngSubmit)="handelOnlinePayment(shippingAddress)">
+    <div class="w-75 mx-auto py-5">
+        <div class="formGroup">
+            <label for="details">Details :</label>
+            <input type="text" class="form-control mb-3" id="details" formControlName="details">
+        </div>
+        <div class="formGroup">
+            <label for="phone">Phone :</label>
+            <input type="tel" class="form-control mb-3" id="phone" formControlName="phone">
+        </div>
+        <div class="formGroup">
+            <label for="city">City :</label>
+            <input type="text" class="form-control mb-3" id="city" formControlName="city">
+        </div>
+
+        <div class="d-flex align-items-center justify-content-around ">
+            <button class="btn main main-bg " type="submit">Online Payment</button>
+        </div>
+    </div>
+</form>
+

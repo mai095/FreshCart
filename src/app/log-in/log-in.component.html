@@ -1,0 +1,35 @@
+
+<div class="w-75 m-auto py-4">
+    <form [formGroup]="loginForm" (ngSubmit)="handelLogIn(loginForm)">
+        <h4 class="my-3">LogIn</h4>
+        <div class="alert alert-danger" *ngIf="apiError">
+            {{apiError}}
+        </div>
+        <!-- &  Name -->
+        <label for="email">Email: </label>
+        <input type="email" formControlName="email" id="email" class="form-control mb-3">
+        <!-- ^ Validation -->
+        <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+            <p *ngIf="loginForm.get('email')?.getError('required')" class="mb-0">Email is required</p>
+            <p *ngIf="loginForm.get('email')?.getError('email')" class="mb-0">Email is invalid</p>
+        </div>
+
+
+        <!-- &  password -->
+        <label for="password">password: </label>
+        <input type="password" formControlName="password" id="password" class="form-control mb-3">
+        <!-- ^ Validation -->
+        <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+            <p *ngIf="loginForm.get('password')?.getError('required')" class="mb-0">password is required</p>
+            <p *ngIf="loginForm.get('password')?.getError('pattern')" class="mb-0">password must start with upperCase then from 3 to 10 small charchter or numbers</p>
+        </div>
+
+      <div class="d-flex align-items-center justify-content-between">
+        <button [disabled]="loginForm.invalid" class="btn border-none main-bg">
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+            <span *ngIf="!isLoading">LogIn</span>
+        </button>
+        <a class="link-primary" routerLink="/forgetpassword">Forget Password</a>
+      </div>
+    </form>
+</div>

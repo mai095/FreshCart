@@ -1,0 +1,12 @@
+<div class=" py-4 ">
+    <h2 class="text-capitalize fw-bold greenColor">shop popular categories</h2>
+    <owl-carousel-o [options]="customOptions">
+    
+        <ng-container *ngFor="let category of category">
+          <ng-template carouselSlide>
+              <img [src]="category.image" height="200"  alt="">
+              <h3 class="h6 ms-1">{{category.name}}</h3>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+</div>
